@@ -1,0 +1,30 @@
+
+  <header class="navbar navbar-fixed-top navbar-default ">
+  
+    <nav>
+     <div class="navbar-header">
+        <a class="navbar-brand" id="survey" href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Smart_Survey_Logo.png" height=60 width=100 alt ="SurveyDemo"/></a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+        
+        <li><%= link_to "Home", root_path %></li>
+      
+        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+        <li> <font color="yellow"><mark><%= current_user.email %></mark></font></li>
+
+        <% else %>
+
+        <li><%= link_to "Home", root_path %></li>
+        <li> <%= link_to "Sign UP", new_user_registration_path  %> </li>
+        <li class="divider"></li>
+        <li><%= link_to "Sign In" , new_user_session_path %> </li>
+        <%end%>
+
+    </ul>
+
+</nav>
+
+</header>
+

@@ -1,0 +1,44 @@
+<br><br><br>
+
+
+<h1>Listing surveys</h1>
+
+<table class="table" id="t01">
+  <thead>
+    <tr>
+      <th id= "survey_name">Survey Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+    <tr>
+      <td><%=link_to  survey.name.capitalize ,   new_survey_given_answer_path(survey), class: "btn btn-link" , id: "survey_name" %></td>
+
+      <td><%= link_to new_survey_given_answer_path(survey), class: 'btn btn-warning' do %>
+        <span class="glyphicon glyphicon-play"></span> Start
+        <% end %><td>
+
+        <% if user_signed_in? && current_user.id == User.first.id %>
+        <td><%= link_to survey_path(survey), class: 'btn btn-warning' do %>
+          <span class="glyphicon glyphicon-info-sign"></span> Report
+          <% end %><td>
+          <% end %>
+          <td><%#= link_to 'Edit', edit_survey_path(survey) %></td>
+          <td><%#= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <% if user_signed_in? %>
+
+    <% if current_user.id == User.first.id %>
+
+    <%= link_to 'New Survey', new_survey_path , class: "btn btn-success" %>
+    <% end %>
+    <% end %>
