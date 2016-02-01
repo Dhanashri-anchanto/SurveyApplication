@@ -6,6 +6,7 @@
 			<th>Answers</th>
 			<th>Total Attempts</th>
 			<th>Total Votes for the Given Answers</th>
+			<th>Total</th>
 
 		</tr>
 		<% sr_no=0 %>
@@ -55,10 +56,18 @@
 				<%= checkbox_array.count(checkbox_ans) %><br>        
 				<% end %>
 
-			</td>        
+			</td>    
+			<td>
+			<% @survey.given_answers.where(:question_id => que.id).group(:question_id, :answer).count.each do |key ,value| %>
+                        <%= value %><br>
+                <% end %>
+			</td>    
 		</tr>
-		<%= pie_chart({"#{@options}" => @options.count}) %>
+		
 			<% end %>
+			<%#= line_chart @survey.given_answers.group(:answer).count %>
+			<%#= area_chart @survey.given_answers.group(:answer).count %>
+			<%= pie_chart @survey.given_answers.group(:answer).count %>
 	</table>
 
 	

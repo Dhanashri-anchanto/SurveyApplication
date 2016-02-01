@@ -61,3 +61,20 @@ Question.create!(survey_id: 4, que_content: 'Would you say our web site is: ', a
 Question.create!(survey_id: 4, que_content: 'When thinking about the reasons you purchased our software, Select some of the following. ', answer_options: 'Seamless integration with other software \n User friendliness of software \n Ability to manipulate algorithms \n Level of pre- and post-purchase service \n Convenience of purchase/quick delivery',types: 'checkbox',position: 6)
 Question.create!(survey_id: 4, que_content: 'What products of services were you looking for that were not found on our website? ', answer_options: 'Cloud \n Collaboration \n Routing \n Security',types: 'radiobutton',position: 7)
 Question.create!(survey_id: 4, que_content: 'Give your feedback ! ', answer_options: ' ',types: 'textfield',position: 8)
+
+
+
+
+
+ s = Survey.find_by_name('My_Survey1')
+if s.present?
+       puts "Alredy exist"
+else
+       s = Survey.create(name: 'My_Survey1')
+       s.questions.build(que_content: 'Have you ever purchased a product or service from our website? ', answer_options: 'Yes \n No',types: 'radiobutton',position: 1).save!
+       s.questions.build(que_content: 'Have you ever purchased a product or service from our website? ', answer_options: 'Yes \n No',types: 'radiobutton',position: 2).save!
+        s.questions.build(que_content: 'Have you ever purchased a product or service from our website? ', answer_options: 'Yes \n No',types: 'radiobutton',position: 3).save!
+         s.questions.build(que_content: 'Have you ever purchased a product or service from our website? ', answer_options: 'Yes \n No',types: 'radiobutton',position: 4).save!
+          s.questions.build(que_content: 'Have you ever purchased a product or service from our website? ', answer_options: 'Yes \n No',types: 'radiobutton',position: 5).save!
+           s.questions.build(que_content: 'Have you ever purchased a product or service from our website? ', answer_options: 'Yes \n No',types: 'radiobutton',position: 6).save!
+       end

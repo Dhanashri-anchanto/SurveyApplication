@@ -10,6 +10,9 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th><th></th><th></th>
     </tr>
   </thead>
 
@@ -28,7 +31,11 @@
           <% end %><td>
           <% end %>
           <td><%#= link_to 'Edit', edit_survey_path(survey) %></td>
-          <td><%#= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+          <td><%= link_to survey, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-warning' do %>
+          <span class="glyphicon glyphicon-trash"></span> Remove  
+                            <% end %></td>
         </tr>
         <% end %>
       </tbody>
